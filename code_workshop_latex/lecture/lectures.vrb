@@ -1,0 +1,19 @@
+\frametitle{Creating my first \LaTeX {} Manuscript}
+Previous gave a warning when generating the references list. Do you know why?
+\pause
+\scriptsize
+\begin{verbatim}
+\begin{document}
+
+\begin{equation}
+e = mc^2
+\label{eq:massenergy}
+\end{equation}
+Mass Energy Einstein equivalence formula
+(Eq.~\ref{eq:massenergy})~\cite{calder1979einstein}.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
+\end{verbatim}

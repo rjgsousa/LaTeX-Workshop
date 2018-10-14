@@ -1,0 +1,1102 @@
+\documentclass[13pt,xcolor=table]{beamer}
+%\documentclass[handout,xcolor=table]{beamer}  % For printable version
+
+\usepackage{graphicx}             % for Windows
+\usepackage{array}
+\usepackage{xmpmulti}
+
+% \usepackage{colortbl}
+% \usepackage[table]{xcolor}
+% \usepackage{beamerthemesplit}
+
+% \usenavigationsymbolstemplate{} % eliminates navigation symbols
+
+%
+% PRESENTATION THEMES
+%
+% \usetheme{default}        % No Navigation Bars
+% \usetheme{Bergen}
+% \usetheme{Boadilla}
+% \usetheme{AnnArbor}       % similar to Boadilla
+% \usetheme{CambridgeUS}    % similar to Boadilla
+% \usetheme{Madrid}
+% \usetheme{Pittsburgh}
+% \usetheme{Rochester}
+% \usetheme{Antibes}        % Tree-Like Navigation Bar
+% \usetheme{JuanLesPins}    % similar to Antibes
+% \usetheme{Montpellier}
+% \usetheme{Berkeley}       % Table of Contents Sidebar
+% \usetheme{PaloAlto}       % similar to Berkeley
+% \usetheme{Goettingen}
+% \usetheme{Marburg}        % similar to Goettingen
+% \usetheme{Hannover}
+% \usetheme{Berlin}         % Mini Frame Navigation
+% \usetheme{Ilmenau}        % similar to Berlin
+% \usetheme{Dresden}        % similar to Berlin
+% \usetheme{Darmstadt}
+% \usetheme{Frankfurt}      % similar to Darmstadt
+% \usetheme{Singapore}
+% \usetheme{Szeged}
+\usetheme{Copenhagen}     % Section and Subsection Tables
+% \usetheme{Luebeck}        % similar to Copenhagen
+% \usetheme{Malmoe}         % similar to Copenhagen
+% \usetheme{Warsaw}         % similar to Copenhagen
+
+%
+% INNER THEMES
+%
+% \useinnertheme{circles} 
+% \useinnertheme{rectangles}
+% \useinnertheme[shadow]{rounded} 
+% \useinnertheme{inmargin} 
+
+%
+% OUTER THEMES
+%
+% \useoutertheme{infolines} 
+% \useoutertheme[]{miniframes} 
+% \useoutertheme[]{smoothbars} 
+% \useoutertheme[]{sidebar} 
+% \useoutertheme{split}
+% \useoutertheme{shadow} 
+% \useoutertheme[]{tree} 
+% \useoutertheme{smoothtree} 
+
+
+%
+% COLOR THEMES
+%
+% \usecolortheme{seahorse}
+% \usecolortheme{albatross}
+% \usecolortheme{beaver}
+% \usecolortheme{beetle}
+% \usecolortheme{crane}
+% \usecolortheme{dolphin}
+% \usecolortheme{dove}
+% \usecolortheme{fly}
+% \usecolortheme{lily}
+% \usecolortheme{orchid}
+% \usecolortheme{rose}
+% \usecolortheme{seagull}
+% \usecolortheme{sidebartab}
+% \usecolortheme{structure}
+% \usecolortheme{whale}
+% \usecolortheme{wolverine}
+
+%
+% FONT THEMES
+% 
+% \usefonttheme{serif} 
+% \usefonttheme{structureitalicserif} 
+% \usefonttheme{structurebold} 
+% \usefonttheme{structuresmallcapsserif} 
+
+% \mode<presentation>
+
+\let\Tiny=\tiny             % Gets rid of Font shape `OT1/cmss/m/n' warning
+
+\title[Intro to Beamer]{An Introduction to \LaTeX\ Beamer}
+\subtitle[Slides]{Making Slide Presentations}
+\author[S Chang]{Silva Chang}
+\institute[CU-Boulder]{CU-Boulder Department of Applied Mathematics}
+\date[Sum09]{Summer 2009}
+
+\begin{document}
+
+\frame{
+  \titlepage
+}
+
+\begin{frame}[shrink]
+  \frametitle{Table of Contents} 
+  
+    \tableofcontents[pausesections] 
+\end{frame}
+
+\section{Introduction}
+\subsection{Frames}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  A Beamer file looks like:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \documentclass{beamer}
+      
+      \begin{document}
+        ...
+      \end{document}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  A frame can be created with either of the following:
+  
+  \begin{block}{}   
+    \begin{verbatim}
+
+    \begin{frame}
+      ...
+    \end{frame}
+  \end{verbatim}
+  \end{block}
+  
+  \begin{block}{}  
+    \begin{verbatim}
+
+    \frame {
+      ...
+    }
+  \end{verbatim}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  You can use the default layout or choose a different theme:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \usetheme{Berkeley}
+      \usecolortheme{wolverine}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+
+\subsection{Title Page, Table of Contents}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  Add info about the title, author, etc., to the preamble:
+  
+  \begin{block}{} 
+    {\footnotesize   
+    \begin{verbatim}
+      \title    [Beamer Intro]{An Introduction to \LaTeX\ Beamer}
+      \subtitle [Slides]      {Making Slide Presentations}
+      \author   [Workshop]    {\LaTeX\ Workshop}
+      \institute[CU-Boulder]  {University of Colorado at Boulder}
+      \date     [Sum09]       {Summer 2009}
+    \end{verbatim}
+    }
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  Then create a title page in the document:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \frame {
+        \titlepage
+      }
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  If you use sectioning commands in your document:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \section{First Section}
+      \subsection{First Subsection}
+      
+      \frame {
+        ...
+      }
+
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  You can create a table of contents:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \frame {
+        \tableofcontents
+      }
+    \end{verbatim}
+  \end{block}
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \frame {
+        \tableofcontents[pausesections] 
+      }
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+
+\subsection{Blocks}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  To create a block in your frame:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{block}{}
+        ...
+      \end{block}
+    \end{verbatim}
+  \end{block}
+  
+  \begin{block}{Block Title}    
+    \begin{verbatim}
+      \begin{block}{Block Title}
+        ...
+      \end{block}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  Most \LaTeX\ commands work in Beamer. For example,
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \[ a^2 + b^2 = c^2. \]
+    \end{verbatim}
+  \end{block}
+  produces \[ a^2 + b^2 = c^2. \]
+
+\end{frame}
+
+\subsection{Options}
+
+\begin{frame}[fragile,plain]
+  \frametitle{Basic Commands}
+  The {\tt frame} environment accepts optional arguments:
+  \begin{itemize}
+    \item {\tt plain}. No headers or footers.
+    \item {\tt shrink}. Shrink contents to fit on one slide.
+    \item {\tt squeeze}. Reduce vertical space.
+    \item {\tt allowframebreaks}. Split slide if necessary.
+  \end{itemize}
+  
+  \vspace{1em}
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{frame}[plain]
+        ...
+      \end{frame}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  To eliminate the navigation symbols, add to the preamble:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \usenavigationsymbolstemplate{}
+    \end{verbatim}
+  \end{block}  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Commands}
+  
+  To create a printout of your slides, add \verb+handout+ to the \verb+\documentclass+ options:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \documentclass[handout]{beamer}
+    \end{verbatim}
+  \end{block}
+  \begin{block}{}    
+    \begin{verbatim}
+      \only<beamer>{To appear in slides only.}
+      \only<handout>{To appear in handout only.}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\section{Using Overlays}
+
+\subsection{Text}
+
+\begin{frame}[fragile]
+  \frametitle{Uncovering Text Piecewise}
+  
+  To uncover text gradually, use the \verb+\pause+ or \verb+\onslide+ command.
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      Line 1 \pause
+      Line 2 \pause
+      Line 3
+    \end{verbatim}
+  \end{block}
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \onslide<1>{Text 1} 
+      \onslide<2>{Text 2}
+      \onslide<3>{Text 3}      
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Uncovering Text Piecewise}
+  \setbeamercovered{transparent}
+  
+  \begin{center}
+  The default size of a Beamer slide\\ \pause
+  is 128 mm by 96 mm\\ \pause
+  or 5.04 in by 3.78 in.
+  \end{center}
+}
+
+\frame
+{
+  \frametitle{Uncovering Text Piecewise}
+  \setbeamercovered{transparent}
+  
+  \begin{center}
+    \onslide<1>{see no evil,} 
+    \onslide<2>{hear no evil,}
+    \onslide<3>{speak no evil.}  
+  \end{center}
+}
+
+\begin{frame}[fragile]
+  \frametitle{Uncovering Text Piecewise}
+  
+  The \verb+\onslide+ command allows you to specify which text goes on each overlay.
+  
+  \begin{block}{}    
+    \begin{verbatim}
+        \onslide<4>   Overlay  4 only
+        \onslide<1,3> Overlays 1 and 3 only
+        \onslide<2-4> Overlays 2 through 4
+        \onslide<2->  Overlay  2 until the end
+        \onslide<-3>  Overlays 1 through 3
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Uncovering Text Piecewise}
+  \setbeamercovered{transparent}
+  
+  \begin{center}
+    \onslide<2>{Multiples of 2:}\\
+    \onslide<3>{Multiples of 3:}\\
+    \onslide<4>{Multiples of 6:}\\[1em]
+    
+    \onslide<1>{1} \quad \onslide<1-2>{2}  \quad \onslide<1,3>{3}  \quad\onslide<1-2>{4} \quad
+    \onslide<1>{5} \quad \onslide<1-4>{6}\quad \onslide<1>{7}  \quad\onslide<1-2>{8} \quad
+    \onslide<1,3>{9} \quad \onslide<1-2>{10} \quad \onslide<1>{11} \quad\onslide<1-4>{12}
+  \end{center}
+}
+
+\subsection{Items}
+
+\begin{frame}[fragile]
+  \frametitle{Uncovering Text Piecewise}
+  
+  To reveal items gradually, use the \verb?\begin{itemize}[<+->]? command.
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{itemize}[<+->] 
+        \item   First item
+        \item   Second item
+        \item   Third item
+      \end{itemize}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Uncovering Items Piecewise}
+  \setbeamercovered{transparent}
+
+  \begin{itemize}[<+->] 
+    \item   $\alpha$ alpha
+    \item   $\beta$ beta
+    \item   $\gamma$ gamma
+  \end{itemize}
+}
+
+\begin{frame}[fragile]
+  \frametitle{Uncovering Several Items at a Time}
+  
+ As with \verb+\onslide+, you can indicate which overlays you would like an item to appear in.
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{itemize}
+        \item<3>   Slide  3 only
+        \item<1,4> Slides 1 and 4 only
+        \item<2->  Slide  2 until the end
+      \end{itemize}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Uncovering Several Items at a Time}
+  \setbeamercovered{transparent}
+  
+  These numbers are \onslide<1>{even,} \onslide<2>{odd,} \onslide<3>{prime.}
+  \begin{itemize}
+  \item<1,3> 2
+  \item<2-> 3 
+  \item<1> 4
+  \item<2-3> 5
+  \item<1> 6 
+  \end{itemize} 
+}
+
+\begin{frame}[fragile]
+  \frametitle{Uncovering Several Items at a Time}
+  
+ By default hidden overlays are not visible. To toggle between transparent and invisible, use these commands: 
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \setbeamercovered{transparent}
+    \end{verbatim}
+  \end{block}
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \setbeamercovered{invisible}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+  
+\frame
+{
+  \frametitle{Uncovering Text Piecewise}
+  
+  \begin{center}
+    \onslide<2>{Multiples of 2:}\\
+    \onslide<3>{Multiples of 3:}\\
+    \onslide<4>{Multiples of 6:}\\[1em]
+    
+    \onslide<1>{1} \quad \onslide<1-2>{2}  \quad \onslide<1,3>{3}  \quad\onslide<1-2>{4} \quad
+    \onslide<1>{5} \quad \onslide<1-4>{6}\quad \onslide<1>{7}  \quad\onslide<1-2>{8} \quad
+    \onslide<1,3>{9} \quad \onslide<1-2>{10} \quad \onslide<1>{11} \quad\onslide<1-4>{12}
+  \end{center}
+}
+
+\begin{frame}[fragile]
+  \frametitle{Replacing Text}
+  
+  To overlay text \emph{on top of} existing text, use \verb+\only+:
+  
+  \begin{block}{}    
+    \begin{verbatim}
+      \only<1> {Overlay 1}
+      \only<2> {Overlay 2}
+      \only<3> {Overlay 3}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Replacing Text}
+  These numbers are \only<1>{even}\only<2>{odd}\only<3>{prime}.
+  \begin{itemize}
+  \item<1,3> 2
+  \item<2-> 3 
+  \item<1> 4
+  \item<2-3> 5
+  \item<1> 6 
+  \end{itemize} 
+}
+
+\frame
+{
+  \frametitle{Replacing Text}
+  This is the \only<1>{\tt 1st}\only<2>{\tt 2nd}\only<3>{\tt 3rd} overlay. 
+}
+
+\subsection{Highlighting}
+
+\begin{frame}[fragile]
+  \frametitle{Highlighting an Item}  
+  Use the \verb+\alert+ command to highlight an item:  
+  \begin{block}{}    
+    \begin{verbatim}
+      This is \alert{highlighted text.}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Highlighting an Item}
+      This is \alert{highlighted text}.  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Highlighting Items Piecewise}
+  
+  Highlight items piecewise by using the following command:  
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{itemize}[<+-| alert@+>] 
+        \item First point. 
+        \item Second point. 
+        \item Third point. 
+      \end{itemize} 
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Highlighting Items Piecewise} 
+  
+  \begin{itemize}[<+-| alert@+>] 
+    \item $\sin \theta$
+    \item $\cos \theta$
+    \item $\tan \theta$
+  \end{itemize} 
+}
+
+\begin{frame}[fragile]
+  \frametitle{Highlighting Two Items at a Time}
+  
+  Or indicate which items are highlighted on which overlay.
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{itemize} 
+        \item<1-| alert@1> First overlay. 
+        \item<2-| alert@2> Second overlay. 
+        \item<1-| alert@1> First overlay. 
+      \end{itemize} 
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Highlighting Two Items at a Time} 
+    \begin{itemize} 
+      \item<1-| alert@1> 2, 4, 6, 8
+      \item<2-| alert@2> 3, 6, 9, 12
+      \item<1-| alert@1> 4, 8, 16, 20
+    \end{itemize} 
+}
+  
+\begin{frame}[fragile]
+  \frametitle{Applying Effect Using Overlays}
+  
+  To apply an effect using overlays, add \texttt{<}\emph{slide num}\texttt{>} to the command:
+  \begin{block}{}    
+    \begin{verbatim}
+      \cmd<1>{Overlay 1}
+      \cmd<2>{Overlay 2}
+      \cmd<3>{Overlay 3}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{ 
+  \frametitle{Applying Effects Using Overlays}
+  \textbf{Bold} on all three overlays. \\
+  \textbf<2>{Bold} on the second overlay only. \\
+  \textbf<3>{Bold} on the third overlay only. 
+}
+
+ 
+\subsection{Equations}
+  
+\begin{frame}[fragile]
+  \frametitle{Uncovering Equations Piecewise}
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{gather} 
+        Equation 1 \\ 
+        \onslide<2->{Equation 2 \\} 
+        \onslide<3->{Equation 3 \\} 
+        \notag 
+      \end{gather} 
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Uncovering {\tt gather} Equations Piecewise} 
+  \begin{gather} 
+    \sin \theta = 1/2 \\ 
+    \onslide<2->{\cos \theta = {\sqrt 3} / 2 \\[.2em]} 
+    \onslide<3->{\tan \theta = \dfrac{\sin \theta}{\cos \theta} = {\sqrt 3} / 3 \\} 
+    \notag 
+  \end{gather} 
+}
+
+\begin{frame}[fragile]
+  \frametitle{Uncovering {\tt align} Equations Piecewise}
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{align} 
+        ... &= ... \\ 
+        \uncover<2->{&= ... \\} 
+        \uncover<3->{&= ... \\} 
+        \notag 
+      \end{align} 
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Uncovering {\tt align} Equations Piecewise} 
+%  \setbeamercovered{invisible}        % necessary for Windows
+  \begin{align} 
+    \cos 2\theta &= \cos^2 \theta - \sin^2 \theta \\ 
+    \uncover<2->{&= 2\cos^2 \theta - 1 \\} 
+    \uncover<3->{&= 1 - 2\sin^2 \theta \\} 
+    \notag 
+  \end{align} 
+}
+
+  
+\subsection{Tables}
+  
+\begin{frame}[fragile]
+  \frametitle{Uncovering a Table Rowwise} 
+  Use \verb+\pause+ to uncover a table one row at a time
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{tabular}{...}
+        row 1 \pause \\
+        row 2 \pause \\
+        row 3
+      \end{tabular}  
+    \end{verbatim}
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \frametitle{Uncovering a Table Rowwise} 
+
+  {\Large
+  \begin{center}
+    \begin{tabular}{ccccc}
+    1 \pause \\
+    1 & 2 & 1 \pause \\
+    1 & 3 & 3 & 1 \pause \\
+    1 & 4 & 6 & 4 & 1
+    \end{tabular} 
+  \end{center}
+  }
+}
+
+\frame
+{
+  \frametitle{Uncovering an Array Rowwise} 
+  \begin{center}
+    \rowcolors[]{1}{violet!40}{violet!30}
+    $\begin{array}{c!{\vrule}c!{\vrule}c!{\vrule}c}   % need array package
+      \theta & \sin \theta & \cos \theta & \tan \theta \pause \\\hline
+      0 & 0 & 1 & 0 \pause \\
+      \pi/2 & 1 & 0 & und \pause \\
+      \pi & 0 & -1 & 0\pause \\
+      3\pi/2 & -1 & 0 & und
+    \end{array} $   
+  \end{center}
+}
+
+\begin{frame}[fragile]
+  \frametitle{Uncovering a Table Columnwise} 
+  Use \verb+\onslide+ to uncover a table one column at a time
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{tabular}{c<{\onslide<2->}c
+                       <{\onslide<3->}c
+                       <{\onslide}c}
+        row 1 \\
+        row 2 \\
+        row 3
+      \end{tabular}  
+    \end{verbatim}
+  \end{block}
+\end{frame}
+  
+\frame
+{
+  \frametitle{Uncovering a Table Columnwise} 
+
+  {\Large
+  \begin{center}
+    \begin{tabular}{c<{\onslide<2->}c
+                     <{\onslide<3->}c
+                     <{\onslide<4->}c
+                     <{\onslide}c}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{tabular}
+  \end{center}
+  }
+}
+  
+\frame
+{
+  \frametitle{Uncovering an Array Columnwise} 
+  \begin{center}
+    \rowcolors[]{1}{violet!40}{violet!30}
+  
+    $\begin{array}{c<{\onslide<2->}!{\vrule}c
+                       <{\onslide<3->}!{\vrule}c
+                       <{\onslide<4->}!{\vrule}c
+                       <{\onslide}c}
+      \theta & \sin \theta & \cos \theta & \tan \theta \\
+      0 & 0 & 1 & 0 \\
+      \pi/2 & 1 & 0 & und \\
+      \pi & 0 & -1 & 0 \\
+      3\pi/2 & -1 & 0 & und
+    \end{array} $   
+  \end{center}
+}  
+  
+\begin{frame}[fragile]
+  \frametitle{Uncovering a Table Elementwise} 
+  Use \verb+\onslide+ to uncover a table one element at a time
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{tabular}{c c} 
+        \onslide<1->{A} & \onslide<2->{B}  \\
+        \onslide<3->{C} & \onslide<4->{D}  \\ 
+      \end{tabular}  
+    \end{verbatim}
+  \end{block}
+\end{frame}
+  
+% \frame {
+%   \frametitle{Uncovering a Table Elementwise} 
+%   \setbeamercovered{invisible}
+%   {\Huge
+%     \begin{center} 
+%       \begin{tabular}{c c} 
+%         \onslide<1->{A} & \onslide<2->{B}  \\
+%         \onslide<3->{C} & \onslide<4->{D}  \\ 
+%       \end{tabular}
+%     \end{center} 
+%   }
+% }
+  
+  
+\frame
+{ 
+  \frametitle{Uncovering a Table Elementwise} 
+  {\Huge 
+  \begin{center} 
+  \begin{tabular}{c|c|c} 
+  \onslide<6->{O} & \onslide<3->{X} & \onslide<5->{X} \\ \hline 
+  \onslide<8->{O} & \onslide<2->{O} &  \\ \hline 
+  \onslide<4->{O} &  & \onslide<7->{X} 
+  \end{tabular} 
+  \end{center} 
+  } 
+}
+ 
+  
+\section{Graphics}
+  
+\begin{frame}[fragile]
+  \frametitle{Inserting Graphics} 
+  Use \verb+\includegraphics+ to insert an image.
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \includegraphics<1>{...}
+      \includegraphics<2>{...}
+    \end{verbatim}
+  \end{block}
+\end{frame}
+  
+  
+\frame
+{
+  \frametitle{Inserting Graphics} 
+  \begin{center}
+  \includegraphics<1>[scale=.25]{snowflake.jpg}% 
+  \includegraphics<2>[scale=.75]{snowflake.jpg}% 
+  \end{center}
+}
+
+  
+\frame
+{
+ 
+  \frametitle{Sierpinski Triangles} 
+  \begin{center} 
+  \multiinclude[format=jpg,width=3in]{sierp}  % need package xmpmulti
+  \end{center} 
+}
+ 
+  
+  
+\section{Block Environments}
+  
+\begin{frame}[fragile]
+  \frametitle{Block Environments} 
+  Beamer provides special block environments
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{env}
+        ...
+      \end{env}
+    \end{verbatim}
+  \end{block}
+  
+  where {\tt env} is one of the following:\\[.5em]
+  {\tt definition},\ \ {\tt theorem},\ \ {\tt lemma},\ \ {\tt corollary},\ \ {\tt proof},\ \ or {\tt alertblock}.
+\end{frame}
+
+\subsection{Theorems and Definitions}
+  
+\frame
+{ 
+  \frametitle{Definitions and Examples}
+  \begin{definition} 
+  The \alert{indefinite integral} $\int f(x)\,dx$ is the set of all antiderivatives \\of $f$. 
+  \end{definition} 
+  \pause
+  
+  \begin{example} 
+  \begin{itemize} 
+  \item $\int 2x\,dx = x^2 + C$
+  \pause  
+  \item $\int 3x^2\,dx = x^3 + C$ 
+  \end{itemize} 
+  \end{example} 
+}
+
+  
+\frame
+{ 
+  \frametitle{Theorems} 
+  \framesubtitle{and Proofs} 
+  \begin{theorem} 
+     \[ \lim_{\theta \to 0} \dfrac{\sin \theta}{\theta} = 1 \] 
+  \end{theorem} 
+  \pause
+  \begin{proof} 
+    \begin{align*}
+      \lim_{\theta \to 0} \dfrac{\sin \theta}{\theta} = \lim_{\theta \to 0} \dfrac{\cos \theta}{1} = \cos 0 = 1.
+    \end{align*}
+  \end{proof} 
+  \pause
+  By L'H\^{o}pital's Rule.
+}
+ 
+  
+\frame
+{
+    \frametitle{Lemma and Corollary}
+    \framesubtitle{and Alertblock}
+     \begin{lemma}
+      A lemma.
+    \end{lemma}
+    \pause
+    
+    \begin{corollary}
+      A corollary.
+    \end{corollary}
+    \pause
+    
+   \begin{alertblock}{Title}
+      An alertblock.
+    \end{alertblock}
+}
+
+  
+\subsection{Columns}
+
+\begin{frame}[fragile]
+  \frametitle{Columns}
+  
+  You can create columns of text. 
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{columns}
+        \column{...} 
+          ...
+        
+        \column{...} 
+          ... 
+      \end{columns} 
+    \end{verbatim}
+  \end{block}
+
+\end{frame}
+
+\frame
+{
+  \frametitle{Columns} 
+  \framesubtitle{And Citations}
+  
+  \begin{columns}[t]
+    \column{.5\textwidth} 
+      \begin{block}{\TeX} 
+        Created by Donald Knuth.
+        \cite{texbook}
+      \end{block} 
+    
+    \pause
+    
+    \column{.5\textwidth} 
+      \begin{block}{\LaTeX} 
+        Created by Leslie Lamport.
+        \cite{latexbook} 
+      \end{block} 
+  \end{columns} 
+}
+  
+\begin{frame}[fragile]
+  \frametitle{Columns}
+  
+  And create citations using bibliography ``keys''.
+
+  \begin{block}{}    
+    \begin{verbatim}
+        \cite{key1} 
+        
+        \begin{thebibliography}
+          \bibitem{key1}
+          ...
+        \end{thebibliography}
+    \end{verbatim}
+  \end{block}
+
+\end{frame}
+
+\subsection{Code}
+
+\begin{frame}[fragile]
+  \frametitle{Inserting Code}
+  
+  Use the {\tt semiverbatim} environment to insert code fragments and highlight parts of the code. 
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{frame}[fragile]
+        \begin{semiverbatim} 
+          \onslide<1->{ ... }
+          \onslide<2->{ \alert<2>{...} }
+          \onslide<3->{ ... }
+        \end{semiverbatim}
+      \end{frame}
+    \end{verbatim}
+  \end{block}  
+\end{frame}
+
+
+\begin{frame}[fragile] 
+  \frametitle{Inserting Code} 
+  \setbeamercovered{transparent}
+  
+  \begin{semiverbatim} 
+     \onslide<1->{\\begin\{align\} }
+     \onslide<2->{  \alert<2>{f(x) \alert<5>{&=} x(x-1)(x+1) \\\\ } }
+     \onslide<3->{  \alert<3>{     \alert<5>{&=} x(x^2 - 1) \\\\} }
+     \onslide<4->{  \alert<4>{     \alert<5>{&=} x^3 - x \\\\} }
+     \onslide<4->{  \alert<4>{\\notag } }
+     \onslide<1->{ \\end\{align\} }          
+  \end{semiverbatim}
+\end{frame}
+ 
+  
+\section{Bibliography} 
+  
+\begin{frame}[fragile]
+  \frametitle{Bibliography}
+  
+  Use the {\tt thebibliography} environment to create a bibliography.
+
+  \begin{block}{}    
+    \begin{verbatim}
+      \begin{thebibliography}
+        \setbeamertemplate{bibliography item}[book]
+        
+        \bibitem[abbr1]{key1}
+        Author1.
+        \newblock Title1.
+        \newblock Publisher1, year1.
+        
+        \bibitem[abbr2]{key2}
+        ...
+      \end{thebibliography}
+    \end{verbatim}
+  \end{block}
+
+\end{frame}
+
+\frame
+{
+  \frametitle{Bibliography}
+
+  \begin{thebibliography}{} 
+   
+  \setbeamertemplate{bibliography item}[book]
+  \bibitem[Knu84]{texbook} 
+  Donald E. Knuth. 
+  \newblock {\em The {\TeX}book}. 
+  \newblock Addison-Wesley, 1984.
+  
+  \bibitem[Lam94]{latexbook} 
+  Leslie Lamport. 
+  \newblock {\em {\LaTeX}: A Document Preparation System}.
+  \newblock Addison-Wesley, 1994.
+  
+  \setbeamertemplate{bibliography item}[article]  
+  \bibitem[HL24]{hardylittlewood} 
+  G.H. Hardy and J.E. Littlewood. 
+  \newblock A Further Contribution to the Study of Goldbach's Problem. 
+  \newblock {\em Proceedings of the  London Mathematical Society}, 2(22):44--56, 1924.
+  \end{thebibliography}
+}
+
+
+\end{document}

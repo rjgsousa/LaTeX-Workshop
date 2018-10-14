@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+\def\convw #1{\mathop{\rightarrow}\limits^{#1}}
+\usepackage{fullpage}
+\title{A Simple Introduction to \LaTeX}
+\author{Merlise Clyde}
+\date{September 10, 2003}
+
+
+\begin{document}
+\maketitle
+
+\section*{Getting Started}
+A basic \LaTeX file has a two major sections: the  preamble to set the
+style options, define variables and new commands, followed by  the guts
+of the document, as shown below in the file {\tt latex-graphics.tex}:
+\begin{verbatim}
+\documentclass[12pt]{article}
+\usepackage{graphicx, fullpage}
+\title{Intoduction to Graphics in \LaTeX}
+\author{Merlise Clyde}
+\date{September 10, 2003}
+
+% end of preamble
+   
+\begin{document}
+\maketitle
+Here is my first document! 
+  
+\end{document}
+\end{verbatim}
+The first line indicates that the document will be in a 12 point
+font and follows the {\tt article} style file.  There are other options
+for style files, including seminar (for slides), book and thesis styles.
+
+The \verb!\usepackage! command is used to add additional packages, in
+this case a package for including graphics and a package for formatting
+pages with one inch margins.  There are lots of other packages!  The
+\verb!\author!, \verb!\title!, and \verb!\date!  commands are included
+in the preamble to define the author, title, and date and are used in
+making a title for the document, using the {\tt \\maketitle} command.
+You can omit the date, and by default the maketitle command will use
+today's date.  The \verb!\maketitle! command is also useful in conjunction with
+\verb!\begin{titlepage}! and \verb!\begin{abstract}!, useful for
+    technical reports.  These are optional in the article environment.
+    Comments can be included anywhere after \%.  In case you are
+    wondering about any typesetting commands used to produce this
+    handout, this file {\tt latex-intro.tex} is also available on the
+    web page, and you can peruse it at your leisure.
+
+\section*{Creating a DVI File}
+Once you have created a \LaTeX file, there are two ways to ``Compile'' a
+LaTeX file to create a DeVice Independent (dvi) file, which can be
+previewed.  The first that will work on both ISDS and ACPUB machines
+involves running LaTeX from a UNIX terminal window: 
+\begin{verbatim}
+> latex latex-graphics
+\end{verbatim}
+Note, it is not necessary to specify the {\tt .tex} file ending. 
+
+The second way  is to use a special LaTeX mode in emacs called {\tt AUCTeX}.
+In  emacs, you should see  ``LaTeX'' on
+the info bar near the bottom of the screen when you open a file ending
+in {\tt .tex}.   This mode will also highlight functions and text in
+different colors, which can be useful in debugging a tex file with
+errors.
+
+In this mode, you can use {\tt C-c C-c}
+to access a set of useful  \LaTeX commands.  For example, {\tt C-c C-c
+  latex} will run \LaTeX\ on the current file.  If it compiles
+successfully and completely (sometimes you need to run it more than
+once if there are internal references), then {\tt C-c C-c View} will
+bring up an xdvi window so that you can preview the dvi file.  Note that
+Emacs is pretty good at guessing what you want to do when you hit {\tt
+  C-c C-c}, so if the default is correct, you can just hit enter.  Other
+useful commands are {\tt   Print} and {\tt Spell}.  For a complete list
+of choices, you can hit {\tt C-c C-c} and hit the tab key.  Note that
+you can use tab-completions for the options.  
+
+If you are not using emacs, then you can preview the dvi file by
+entering  after the unix prompt
+\begin{verbatim}
+> xdvi latex-graphics &
+\end{verbatim}
+in a unix terminal window.  Again, the dvi file ending is not
+necessary.  Keep this window open; as you add to the \LaTeX file and
+re-compile, the dvi window will be updated.  You may need
+to click on the Reread button to reload the file and update the window,
+if the changes do not automatically appear.
+
+\section*{Printing}
+There are two options for creating a file that can be printed.  
+\subsection*{Creating a Postscript File}
+The first option uses the unix command 
+{\tt dvips}  to create a
+postscript ({\tt .ps}) file from the {\tt .dvi} file.  On some
+systems, it will send this file directly to the printer, and not save
+anything to disk unless you explicitly tell it to with the \verb!-o!
+switch.   In ISDS if
+you use {\tt dvips} from the unix prompt, it will only create a postscript
+file, and not send anything to the printer.  You can then print by
+using {\tt lpr -Pmyprinter myfile.ps}, where -Pmyprinter specifies
+sending the output to the printer named myprinter.
+
+You can print two pages in smaller print one one piece of paper
+(sideways) with the {\tt psnup} command.  One way to do this at the
+unix prompt is to run dvips and then {\it pipe} the output to the psnup
+function and then pipe that output to the lpr function:
+\begin{verbatim}
+dvips latex-example -f | psnup -n 2 | lpr -P211
+\end{verbatim}
+where the printer name here is {\tt 211}.  
+
+Note that {\tt dvips} has many options.  Important ones include those
+that specify a print range, such as \verb!-p!, \verb!-n!, and
+\verb!-f!.  For more info, see the {\tt man} page for {\tt dvips},
+\begin{verbatim} 
+man dvips
+\end{verbatim}
+
+\subsection*{Creating a PDF File}
+While postscript is meant to be portable across many
+environments/printers, in reality this is not always the case.  The
+Adobe Portable Document Format is meant to be a better solution (but
+doesn't always succeed either).  To create a PDF file, there are a
+couple of options.  The easiest way is to use the command
+\begin{verbatim}
+> pdflatex latex-graphics
+\end{verbatim}
+to create a PDF file.  This option will require that all graphs in any
+figure are in a PDF format or non-postscript format as described later.
+
+\section*{Other Parts of the Document}
+All of the commands below should be contained within the document
+environment between the 
+\begin{verbatim}
+\begin{document}
+ 
+\section{Introduction} 
+Let's get started!
+\subsection{How to add sections}
+use the command....
+\section{Adding Figures}
+
+etc
+
+\end{document}
+\end{verbatim}
+
+\subsection*{Sections}
+To create section and subsection headings use the command 
+\begin{verbatim}
+\section{EDA}
+\subsection{Quantile-Quantile Plots}
+\end{verbatim}
+You will note that all the sections and subsections in this 
+document are not numbered. If you do not
+want numbered sections, you can instead use \verb!\section*! and 
+\verb!\subsection*!.  
+
+\subsection*{Comments}
+Comments are started by the percent sign (\%).  Anything that appears
+on a line after a \% is ignored by \LaTeX.  This can be helpful when
+making changes to a document.  But this is why you must always
+remember to put a backslash before a percent sign when you want a
+percent sign in your text, i.e., \verb!\%!.  Try removing the
+backslash in the example file before the percent sign of 
+\verb!4\% margin of error!, recompile, and see what happens.  To comment
+out a large block of text include it in a comment environment by using
+\begin{verbatim}
+\begin{comment}
+text to comment out
+\end{comment}
+\end{verbatim}
+To use this environment, add {\tt comment} to the list of packages in
+the \verb!\usepackage! command.
+
+\subsection*{Equations and Mathematics}
+Within the text you may want to include formulae or Greek symbols. To do
+this, you need to invoke math mode with a 
+single dollar sign and type in the expression, for example for a
+fraction 1/2 use \verb!$\frac{1}{2}$! command, which
+takes two arguments, the numerator and the denominator.  For an
+expression using Greek letters, ${\rm E}[Y_i] = \beta_0 + \beta_1 X_i$, use
+\verb!${\rm E}[Y_i] = \beta_0 + \beta_1 X_i$!
+If in doubt about how to get the right text for ann expression, use the
+\LaTeX menu in emacs to invoke Math Mode (under Miscellaneous) or use
+{\tt C-c ~}, and of course look it up in your favorite \LaTeX book.
+
+For a more complicated expression you may want to offset it from the
+text using a displayed equation environment.
+
+\begin{equation}
+p(x_i|\theta) = \theta^{x_i}(1-\theta)^{1-x_i} = \left\{ \begin{array}{ll}
+                                           \theta& \mbox{if $x_i=1$,} \\ 
+                       1-\theta& \mbox{if $x_i=0$.} \end{array} \right.
+\end{equation}
+by using
+\begin{verbatim}
+\begin{equation}
+p(x_i|\theta) = \theta^{x_i}(1-\theta)^{1-x_i} = \left\{ \begin{array}{ll}
+                                           \theta& \mbox{if $x_i=1$,} \\ 
+                       1-\theta& \mbox{if $x_i=0$.} \end{array} \right.
+\end{equation}
+\end{verbatim}
+To get a curly brace to print, you must use \verb!\{!, since the curly
+brace is used within \LaTeX\ to bound action areas.  You can mix and match your
+\verb!\left! and \verb!\right!, as long as you have one of each.  You
+can also use \verb!\left.! to match any \verb!\right! but to not print
+anything (since they must be balanced). 
+Note that an {\tt array} is just like a {\tt tabular}, except that it
+must be used in math mode, and everything inside is automatically in
+math mode.  Also note that \verb!\mbox{}! is a method of including
+regular text (not in math mode) inside of math mode.  Try the above
+expression so you can see all of the parts in action.
+
+With the equation environment, equations are automatically numbered
+throughout the document. To 
+skip numbers, you  could equally use \verb!$$! and \verb!$$!\verb!\[! and \verb!\]!, or
+\verb!\begin{equation*}! and \verb!\end{equation*}!.   This is analogous to the difference between
+\verb!\begin{section}! and \verb!\begin{section*}!.
+You can get \LaTeX\  to make an automatic reference with the
+\verb!\label{eq:bernoulli}! and \verb!\ref{eq:bernoulli}! commands.
+
+\section*{Figures}
+To include a figure in a document, use the figure and centering environments.
+\begin{verbatim}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[height=1in,width=1in,angle=-90]{foo}
+\caption{This is a figure.}
+\end{center}
+\end{figure}
+
+\end{verbatim}
+
+The syntax of the \verb!\includegraphics! command is as follows:
+
+\begin{verbatim}
+\includegraphics[parameters]{filename}
+\end{verbatim}
+
+where parameters is a comma-separated list of any of the
+following: 
+\begin{verbatim}
+           bb=llx lly urx ury (bounding box),
+           width=h_length, height=v_length,
+           angle= angle,  scale=factor,
+           clip=true/false, draft=true/false.
+\end{verbatim}
+Use the \verb!\includegraphics! command with the name of the
+graphic file {\tt foo} without extension.  By doing so
+each of {\bf latex} and {\bf pdflatex} will choose the correct
+version of the file to be included, i.e., 
+foo.ps and foo.pdf (or
+foo.png, or whatever graphic format you have chosen).
+
+\section*{Other Environments}
+The AUCTeX mode for LaTeX has several built in function to insert LaTeX
+commands.  You can explore options under the LaTeX menu.  Most of these
+are ``bound'' to particular Control or Meta key sequences when in LaTeX
+mode. 
+
+\section*{Finishing Up}
+When you are done, make sure to close any {\tt xdvi} windows and exit
+emacs before logging off.  Failure to do so could spawn runaway
+processes that gobble up memory!
+
+
+\end{document}
+
+
+

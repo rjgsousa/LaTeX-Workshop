@@ -1,0 +1,117 @@
+\begin{center}
+\centerline{\LaTeX{} Workshop Folha de Exercicios}
+\end{center}
+
+%% -------------------------------------------------------------------------------------------------
+\section{\LaTeX{}} 
+\hspace{1pt}
+\vspace{1pt}
+
+Please check references~\cite{oetiker2010not,forbes2011documentation} for more information.
+
+
+\section{Exercicios}
+\hspace{1pt}
+
+\vspace{1pt}
+
+\begin{enumerate}
+\item Descompacte o ficheiro ``latex\_workshop.zip''. Irá encontrar uma pasta com o nome ``Ex1'' com um conjunto de ficheiros incluídos. Abra o ficheiro article.tex com o TeXworks e resolva as seguintes questões:
+\begin{enumerate}
+  \item\label{one:one} No \verb!documentclass! define que o artigo tenha que ser da \emph{IEEE transactions} (\verb!\usepackage{IEEEtran}!);
+  \item Defina o título (\verb!\title{...} ... \maketitle!);
+  \item Defina o autor (por exemplo, o seu nome);
+  \item Acrescente mais dois autores (por exemplo, o seu nome e de um dos seus colegas);
+  \item\label{one:five} Crie o ambiente para o resumo (\verb!\begin{abstract}...\end{abstract}!);
+  \item Incorpore o módulo Lorem Ipsum (\verb!\usepackage{lipsum}!);
+  \item Popule o $abstract$ graças ao módulo Lorem Ipsum com dois parágrafos (consulte a documentação do ctan);
+  \item Crie 5 Secções (Introdução, Estado da Arte, Métodos, Discussão e Conclusão);
+  \item Adicone o módulo \verb!utf8!;
+  \item Popule as secções criadas com o Lorem Ipsum à descrição;
+  \item Incorpore o módulo para a utilização de imagens (\verb!\usepackage{graphicx}!);
+  \item Incorpore o módulo para as sub-figuras (\verb!\usepackage{subfig}!);
+  \item Crie uma grelha de 2 linhas por 5 columas para as imagens que se encontra na pasta \emph{imgs};
+  \item Experimente utilizar \verb!\begin{figure*} ... \end{figure*}! em vez de \verb!\begin{figure} ... \end{figure}! Discuta o resultado.
+  \item Legende cada uma das fíguras individuais;
+  \item Crie um $label$ numa das subfiguras e referencie no texto;
+  \item Legende a figura global;
+  \item Crie um $label$ e referencie a figura no texto (\verb!\label{}...\ref{}!);
+  \item Crie uma lista de items de Flores com uma $label$ associado a cada item;
+  \item Referencie os items no texto; 
+ \item Cite o artigo que se encontra no ficheiro $refs.bib$ (Porque não funcionou?); 
+  \item Adicione a secção para as referências;
+  \item No estilo da bibliografia, utilize o estilo \verb!IEEEtran! (Reparou na diferença?).
+  \item Crie uma entrada bibliográfica (tipo artigo) com os seguintes campos:
+    \begin{description}
+      \item[author] Bishop, Tom E and Favaro, Paolo
+      \item[title] The light field camera: Extended depth of field, aliasing, and superresolution
+      \item[journal] Pattern Analysis and Machine Intelligence, IEEE Transactions on
+      \item[volume] 34
+      \item[number] 5
+      \item[pages] 972--986
+      \item[year] 2012
+      \item[publisher] IEEE
+    \end{description}
+    cite e verifique o resultado.
+\end{enumerate}
+
+\item Num outro documento (reproduza os pontos \ref{one:one}-\ref{one:five}, da questão 1) reproduza em \LaTeX{} a Tabela \ref{tab:tab}:
+
+\begin{table}[!h]
+\centering
+\caption{Population between the ages of 15 and 64 as a percentage of the total population.} 
+\begin{tabular}{c||c|c|c|c|c}
+\hline\hline
+World Region             & Country        & 2008    & 2009  & 2010  & 2011\\ \hline\hline
+\multirow{2}{*}{Africa}  & Angola         & 50 	    & 51    & 51    & 51\\
+                         & South Africa   & 65      & 65    & 65    & 65 \\\hline
+\multirow{2}{*}{Asia}    & Afghanistan    & 51      & 51    & 51    & 52\\
+                         & China 	  & 72      & 72    & 72    & 73\\\hline
+\multirow{2}{*}{South America}   & Argentina     & 64 	& 64 	& 65 	& 65 \\	
+                                 & Brazil 	& 67 	& 67 	& 68 	&68 \\
+\hline\hline
+\end{tabular}
+\label{tab:tab}
+\end{table}
+
+\item Crie em \LaTeX{} as seguintes fórmulas (tome atenção à formatação, numeração, $\ldots$):
+\begin{enumerate}
+\item $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+
+\item 
+\[
+\sum (1+x)^n
+\]
+
+\item
+\begin{equation}
+e^x=1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+...
+\end{equation}
+
+\item 
+\begin{equation}
+f(x)=a_0+\sum_{n=1}^\infty \left [ a_n \cos\left ( \frac{nx\,\pi}{L} \right ) + b_n \sin\left ( \frac{nx\,\pi}{L} \right ) \right ]
+\end{equation}
+
+\item 
+\[
+\begin{pmatrix}
+ a_{11} & \cdots & a_{1n}\\ 
+ \vdots & \ddots & \vdots\\ 
+ a_{m1} & \cdots & a_{mn}
+ \end{pmatrix}
+\]
+
+%\item 
+%\[
+%\left (
+%\begin{array}{cc}
+%1 & 1\\
+%2 & 1
+%\end{array}
+%\right )
+%\]
+\end{enumerate}
+
+\end{enumerate}
+

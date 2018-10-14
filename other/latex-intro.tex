@@ -1,0 +1,496 @@
+
+%% Revised 06/22/02 (cmihelic)
+%% 2002 TA Revisions 06/22/02 (sasen)
+%% Further revised 06/25/02; slides numbered (cmihelic)
+%% Revised 2003 TA: 06/21/03 (bveto)
+%% More revisions: 06/24/03 (sasen)
+%% Let's call it...a...REVISION! 06/24/05 (semenko)
+%% Yet again ... 06/24/06 (kaloyeh)
+%% Revised 06/23/06 (sasen, quentin)
+%% Revised 06/23/09 (quentin)
+%% Tiny revisions 06/17/10 (milese); may do more
+%% Revised 06/23/12 to add slide on BibTeX (belzner)
+
+\documentclass[landscape]{slides}
+\usepackage{graphics, color}
+\usepackage{lscape}
+\usepackage{standard-slide-include}
+\usepackage{fancyhea}
+\usepackage{lshort}
+\title{Introduction to \LaTeX}
+\author{RSI {\number\year} Staff}
+\date{}
+
+%\pagestyle{empty}
+
+%\addtolength{\topmargin}{-1in}
+%\addtolength{\textheight}{2in}
+%\frenchspacing
+%\hyphenpenalty=10000
+%\rightskip=0pt plus1in
+
+\begin{document}
+
+% \newlength{\titlewd}
+% \def\hzline{\makebox[\textwidth]{\hrulefill}}
+% \def\mknewpage{\newpage}
+% \def\titlesize{\large}
+% \def\textsize{\normalsize}
+% \def\mktitle#1{{
+%  \def\thetitle{{\titlesize \bf #1}}
+%  \settowidth{\titlewd}{\thetitle}
+%  \flushleft \thetitle \hspace{-\titlewd}
+%  \rule[-.3\baselineskip]{\textwidth}{.02in}
+% }}
+% \def\mkltitle#1{{
+%  \def\thetitle{{\titlesize \bf #1}}
+%  \settowidth{\titlewd}{\thetitle}
+%  \flushleft \thetitle \hspace{-\titlewd}
+%  \rule[.7\baselineskip]{\textwidth}{.02in}
+% }}
+% \def\i#1{\ifmmode\mbox{\it #1}\else{\it #1\/}\fi}
+% \def\t#1{{\tt #1}}
+
+\renewcommand{\labelitemii}{\labelitemi}
+\renewcommand{\labelitemiv}{\labelitemi}
+
+%\newcommand{\cmd}[1]{{\tt $\backslash$#1}}
+
+
+%%% intro
+\begin{slide}
+%\vspace{3in}
+%\begin{center}
+%{\Large \bf Introduction to \LaTeX} \\
+%\vspace{1in}
+%{\large \bf RSI Staff} \\
+%{\large \bf 27 June 19100}
+%\end{center}
+  \thispagestyle{empty}
+  \maketitle
+\end{slide}
+
+
+%%% table of contents
+\begin{slide}
+  \begin{small}
+    \tableofcontents
+  \end{small}
+\end{slide}
+
+\addtocounter{slide}{-1}
+
+
+\begin{slide}
+\mktitle{What is \LaTeX?}
+\begin{itemize}
+\item Professional-quality typesetting program
+\item Standard in scientific communication
+\item Uses text-based commands to format
+\end{itemize}
+
+\begin{example}
+\emph{This is very important.}
+\end{example}
+
+\begin{itemize}
+\item Flexible: can format letters, papers, even books
+\item Easy to effect changes to whole document
+\end{itemize}
+\end{slide}
+
+% Note to future TAs: we're changing the order here because students
+% want to get started; they don't want to hear us yammer on about what
+% commands look like. So let's have them do an example and then explain
+% at greater levels of detail afterwards. -- sasen, 2008
+
+\begin{slide}
+\mktitle{First Example}
+\begin{itemize}
+\item To begin, type
+\begin{verbatim}
+athena% cd ~/RSI/MiniPaper/
+athena% gedit first.tex &
+\end{verbatim}
+\item Now type  the following in your document:
+\begin{verbatim}
+\documentclass{article}
+\begin{document}
+This is my first \LaTeX\ document.
+\end{document}
+\end{verbatim}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+  \mktitle{Compiling}
+  \begin{itemize}
+    \item To compile your document, save it and type at the prompt:
+\begin{verbatim}
+athena% make first.pdf
+\end{verbatim}
+    \item To look at it, type
+\begin{verbatim}
+athena% evince first.pdf &
+\end{verbatim}
+    \item You can also use \texttt{xpdf} or \texttt{acroread}
+instead of \texttt{evince}
+%(but \texttt{xpdf} won't work in 37-312).
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Starting your \LaTeX\ document}
+\begin{itemize}
+\item \cmd{documentclass}\{$\cdots$\} specifies the type of document being
+written ({\tt article}, {\tt report}, {\tt beamer}, etc.) and takes various
+options (font size, double spacing).
+
+\item \cmd{usepackage}\{$\cdots$\} loads various features to your
+document.
+\item \cmd{begin\{document\}}$\cdots$\cmd{end\{document\}} surrounds
+the body text of the document.
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{\LaTeX\ command syntax} \LaTeX\ uses commands to indicate
+document styles, formatting, etc.
+\begin{itemize}
+\item Commands begin with backslash {\tt $\backslash$}, required
+arguments go in curly braces {\tt \{ \}}, optional ones in square
+brackets {\tt [ ]}.
+\item Many commands are given by \cmd{begin\{foo\}} ... \cmd{end\{foo\}},
+which format the text between them based on {\tt foo}.
+\end{itemize}
+\begin{example}
+\begin{center}
+This text is centered.
+\end{center}
+\begin{equation}
+\alpha \times \beta = \gamma
+\end{equation}
+\end{example}
+\end{slide}
+
+\begin{slide}
+\mktitle{Adding a title/author}
+\begin{itemize}
+\item \cmd{title}\{$\cdots$\} and \cmd{author}\{$\cdots$\} are
+used to specify the title and author of the paper.
+\item \cmd{maketitle} then inserts the given information into the
+  document and formats it appropriately.
+\begin{verbatim}
+\documentclass{article}
+\title{Odyssey}
+\author{Homer}
+\begin{document}
+\maketitle
+This is my first \LaTeX\ document.
+\end{document}
+\end{verbatim}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Typesetting: Spacing}
+\begin{itemize}
+\item Any number of whitespace characters is treated as one ``space''.
+\item Any number of blank lines is treated as a paragraph break.
+\begin{example}
+It does not matter whether you
+enter one or several     spaces
+after a word.
+
+An empty line starts a new
+paragraph.
+\end{example}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Typesetting: Special characters}
+\begin{itemize}
+\item For quotes, use {\tt ``} (two backquotes) and {\tt ''} (two
+apostrophes) instead of {\tt "}. For single quotes, just use
+\texttt{`} and \texttt{'}.
+\item However, emacs does the Right Thing\texttrademark\ (most of the time)
+if you type {\tt "}, so you don't need to do anything
+special.  \item {\tt \%} is the comment character.  Use \cmd{\%} to
+insert a {\tt \%} in your document. If you just use {\tt \%}, \LaTeX\ 
+will ignore the rest of that line.
+\item Similarly, {\tt \_}, {\tt \$}, {\tt \#}, {\tt \&}, {\tt \{}, and
+{\tt \}} all mean something special.  Use escapes like \cmd{\$} to
+put these in your document.
+\end{itemize}
+\end{slide}
+
+
+
+\begin{slide}
+\mktitle{Layout: Sections} You can define sections in your paper.
+\begin{verbatim}
+\section{Introduction}
+RSI is fun.
+
+\subsection{First Part}
+My mentor is nice.
+
+\subsection{Second Part}
+My counselor brought us ice cream!
+
+\section{Conclusion}
+This is the life.
+\end{verbatim}
+\end{slide}
+
+\begin{slide}
+\mktitle{Layout: Lists}
+\begin{itemize}
+\item Use {\tt itemize} to create bulleted lists and {\tt enumerate}
+to create numbered lists:
+\begin{example}
+RSI kids do not
+\begin{itemize}
+\item set things on fire.
+\item lose their room keys.
+\item terrorize MIT students.
+\end{itemize}
+My plan for this summer is to:
+\begin{enumerate}
+\item Do some research.
+\item Stay awake at mentorship.
+\item Beat my roommate at Set.
+\end{enumerate}
+\end{example}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Layout: Footnotes and Bibliography} \begin{itemize}
+
+\item For more casual references, use footnotes:
+\begin{example}
+At some point during the summer,
+the RSI students and the PROMYS~
+\footnote{PROMYS sucks, we'll beat them this year.}
+students will duke it out
+on the ultimate field.
+\end{example}
+\item To refer to an outside source, cite it from your bibliography.
+\begin{small}
+\begin{verbatim}
+Rumor has it that if you fall asleep in the lectures, you will be
+assigned to cleaning all the bathrooms in Simmons.\cite{ugolini}
+
+<biblio.bib>
+@article {ugolini
+...
+}
+\end{verbatim}
+\end{small}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Layout: References}
+\begin{itemize}
+\item \LaTeX\ lets you refer to one part of the paper from another
+part.
+\begin{verbatim}
+\section{foo}
+\label{sec:foo} Don't buy lots of Snapple on your meal card
+to take to your rooms.  It makes the admins angry.
+\end{verbatim}
+$$\cdots$$
+
+\begin{verbatim}
+\section{bar}
+In Section~\ref{sec:foo}, we discussed how you shouldn't
+hoard lots of Snapple from LaVerde's.
+\end{verbatim}
+\item This will replace the \cmd{ref} command with foo's section number.
+You can \cmd{label} almost anything, including sections, figures,
+tables, and equations.
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}
+\mktitle{RSI Papers: Setting Up}
+You must do the following to work on your papers, 
+\begin{enumerate}
+\item Go to destination directory \\
+    {\tt athena\% cd \~{ }/RSI/MiniPaper}
+
+\item Put text and formatting instructions into a text file ({\tt
+paper.tex}) using your choice of text editor.
+\item To spellcheck, you can use \\ {\tt athena\% ispell -t {\it
+filename}}
+\end{enumerate}
+\end{slide}
+
+\begin{slide}
+\mktitle{RSI Papers: Using the Templates} For your minipaper:
+\begin{itemize}
+\item  Edit {\tt abstract.tex}, {\tt biblio.bib}, {\tt cover.tex} (title),
+and {\tt paper.tex} \\ Do NOT modify {\tt main.tex}! \vspace{-.25in}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Latex Ouput: For Future Reference} There are various output
+formats for your paper:
+\begin{itemize}
+\item Device independent (DVI) - standard output format of
+\TeX\
+\item Postscript (PS) - compiled version of document for
+printing
+\item Portable document format (PDF) - compressed version of
+document for sharing
+\end{itemize}
+
+\begin{tabular}{|c|c|c|c|}
+\hline & Creating & Viewing & Printing \\ & & &\\
+\hline {\tt .dvi} & {\tt latex main.tex} & {\tt xdvi main.dvi} & {\tt dvips main.dvi} \\ & & &\\
+\hline {\tt .ps} & {\tt dvips main.dvi -o} & {\tt gv main.ps} & {\tt lpr main.ps} \\ & & &\\
+\hline {\tt .pdf} & \begin{minipage}{0.35\textwidth} \center{\tt pdflatex main.tex}\end{minipage} & {\tt acroread main.pdf} & Print from {\tt xpdf} \\ & & &\\
+\hline\end{tabular}
+\end{slide}
+
+% !!!
+% We need to see if xpdf actually works in the one cluster; if it
+% doesn't, we need to change the previous slide
+
+\begin{slide}
+\mktitle{What does that ``make'' command do?}
+\begin{itemize}
+  \item ``make'' reads a file called ``Makefile'' from the current
+    directory and uses it to describe how to create a file.
+  \item We've provided a makefile containing:
+\begin{verbatim}
+include /mit/rsi/misc/texenv.make
+
+all: main.pdf
+
+%.pdf: %.tex
+rubber --pdf $<
+
+.PHONY: clean
+clean:
+rm *.aux *.log *.dvi
+\end{verbatim}
+  \item This says to use \verb+rubber --pdf $<+ to select the necessary commands to compile {\tt .tex} and related files into {\tt .pdf} files.
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Errors}
+Sometimes things will go wrong.  When you get an error:
+\begin{itemize}
+\item Look for the line number.  {\tt M-x goto-line} in emacs will take
+you there.
+\item Hit {\tt x} to stop the compiler.
+\item Hit {\tt return} to tell the compiler to continue past the error.
+\end{itemize}
+Your papers must compile cleanly when you submit them, without having to
+press return.
+\end{slide}
+
+\begin{slide}
+% Actually four, counting the minus sign in math mode
+\mktitle{Typesetting: The Hyphen and Its Friends} The hyphen
+character (\texttt{-}) is used to generate three distinct
+punctuation marks.
+\begin{itemize}
+\item Hyphen (in a compound word):
+just \texttt{-}, as in \texttt{path-homotopic}.
+\item En-dash (in a numerical range):
+\texttt{--}, as in \texttt{1984--2008}.
+\item Em-dash (break in a sentence):
+\texttt{---}, as in \texttt{Yes---just not today} or \texttt {No---I
+  just tested positive}.
+\begin{example}
+That absent-minded TA threw
+pages 8--12 away---what a fool!
+\end{example}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Typesetting: Hacking Spacing} There are various ways to force
+\LaTeX\ to create spaces:
+\begin{itemize}
+
+\item \cmd{ } (backslash-space) and \verb=~= force a space after a command: the latter prevents a linebreak
+(e.g., \verb=In Section~2, we ...=)
+
+\item \cmd{$\backslash$} forces a linebreak.  Don't use this unless
+you're really sure!
+
+\item \cmd{hspace\{}\#\#\#\texttt{\}} and
+\cmd{vspace\{}\#\#\#\texttt{\}} force horizontal and vertical spaces
+respectively, with size \#\#\# (a positive, real number with units of length,
+e.g., \verb=\hspace{0.5cm}=).
+
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}
+\mktitle{Typesetting: Hacking Text Formatting} \LaTeX\ is all about not
+worrying about formatting. But {\it very} occasionally it's useful
+to have different font attributes.
+
+\begin{itemize}
+\item Various font adjustments:
+\begin{example}
+This is \emph{emphasis}.
+This is \textbf{bold}.
+This is \texttt{teletype}.
+\end{example}
+\item Various font sizes:
+\begin{example}
+This is {\large large}.
+This is {\Large Large}.
+This is {\LARGE LARGE}.
+\end{example}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\mktitle{Using BibTeX}
+The template is in the file biblio.bib and looks like below. Fill in the spaces between the curly braces with the proper information.
+
+\begin{verbatim}
+@article{name,
+	 author={   },
+	 title={   },
+	 journal={   },
+	 volume={   },
+	 year = {   },
+	 pages = {   }
+	}
+\end{verbatim}
+
+You will have access to three BibTeX templates (i.e., Article, Book,
+Website) in biblio.bib. Copy them as needed.
+\end{slide}
+
+\begin{slide}
+\mktitle{Getting Help}
+\begin{itemize}
+\item For frequently asked questions and answers, \hfill\\{\tt http://web.mit.edu/rsi/www/} and follow the help link.
+\item {\tt rsi-help} zephyr class.  Use the {\tt zrsihelp}
+command.
+\item A student association known as SIPB also offers advice at
+\[\hbox{\tt http://www.mit.edu/sipb/docs.html}.\]
+Its office is located just outside the w20-575 cluster.
+Also,  SIPB's ``Inessential \LaTeX,'' found at
+\[\hbox{\texttt{/mit/sipb/doc/iLaTeX.PS}},\] is a useful reference.
+\item ``The Not So Short Introduction to \LaTeX'' is at
+\[\hbox{\tt http://tobi.oetiker.ch/lshort/lshort.pdf}\]
+\end{itemize}
+\end{slide}
+
+\end{document}
